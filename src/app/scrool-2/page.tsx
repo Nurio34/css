@@ -9,7 +9,12 @@ function Scroll2() {
     const path = usePathname();
     const { setPage } = useGlobalContext();
     const [scrollY, setScrollY] = useState<number>(0);
-    console.log({ scrollY });
+    const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+    const size = 320;
+    const pieces_per_floor = 20;
+    const piece_size = size / pieces_per_floor;
+    const total_pieces = pieces_per_floor * pieces_per_floor;
+    const scroll_height = 111.11111450195312;
 
     useEffect(() => {
         setPage(path);
@@ -20,32 +25,38 @@ function Scroll2() {
             }
         };
 
+        const updateWindowSize = () => {
+            if (typeof window !== "undefined") {
+                setWindowSize({
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                });
+            }
+        };
+
         if (typeof window !== "undefined") {
             window.addEventListener("scroll", handleScroll);
+            window.addEventListener("resize", updateWindowSize);
+            updateWindowSize();
         }
 
         return () => {
             if (typeof window !== "undefined") {
                 window.removeEventListener("scroll", handleScroll);
+                window.removeEventListener("resize", updateWindowSize);
             }
         };
-    }, []);
-
-    const size = 320;
-    const pieces_per_floor = 20;
-    const piece_size = size / pieces_per_floor;
-    const total_pieces = pieces_per_floor * pieces_per_floor;
-    const scroll_height = 111.11111450195312;
+    }, [path, setPage]);
 
     return (
         <main
-            className="flex justify-center items-center overflow-hidden min-h-screen "
+            className="flex justify-center items-center overflow-hidden min-h-screen"
             style={
                 {
                     "--size": piece_size,
                     "--box_size": size,
                     minHeight:
-                        window.innerHeight + scroll_height * pieces_per_floor,
+                        windowSize.height + scroll_height * pieces_per_floor,
                 } as React.CSSProperties
             }
         >
@@ -55,7 +66,7 @@ function Scroll2() {
                     return (
                         <div
                             key={ind}
-                            className="Scroll2_Piece aspect-square overflow-hidden "
+                            className="Scroll2_Piece aspect-square overflow-hidden"
                             style={
                                 {
                                     width: piece_size,
@@ -64,16 +75,16 @@ function Scroll2() {
                                             ? ind % pieces_per_floor
                                             : Math.floor(
                                                   Math.random() *
-                                                      window.innerWidth -
-                                                      window.innerWidth / 2,
+                                                      windowSize.width -
+                                                      windowSize.width / 2,
                                               ),
                                     "--y":
                                         scrollY > scroll_height * ind
                                             ? Math.floor(ind / pieces_per_floor)
                                             : Math.floor(
                                                   Math.random() *
-                                                      window.innerHeight -
-                                                      window.innerHeight / 2,
+                                                      windowSize.height -
+                                                      windowSize.height / 2,
                                               ),
                                 } as React.CSSProperties
                             }
