@@ -15,12 +15,20 @@ function Scroll2() {
         setPage(path);
 
         const handleScroll = () => {
-            setScrollY(window.document.documentElement.scrollTop);
+            if (typeof window !== "undefined") {
+                setScrollY(window.document.documentElement.scrollTop);
+            }
         };
 
-        window.addEventListener("scroll", handleScroll);
+        if (typeof window !== "undefined") {
+            window.addEventListener("scroll", handleScroll);
+        }
 
-        return () => window.removeEventListener("scroll", handleScroll);
+        return () => {
+            if (typeof window !== "undefined") {
+                window.removeEventListener("scroll", handleScroll);
+            }
+        };
     }, []);
 
     const size = 320;

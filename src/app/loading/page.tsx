@@ -12,7 +12,7 @@ function Client() {
     const { setPage } = useGlobalContext();
     useEffect(() => {
         setPage(path);
-    }, []);
+    }, [path, setPage]);
 
     const loading = "loading..........";
 

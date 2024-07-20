@@ -31,7 +31,7 @@ function RotatingCube() {
             window.removeEventListener("mousemove", handleAngle);
             window.removeEventListener("contextmenu", handleRotating);
         };
-    }, [isRotating]);
+    }, [isRotating, path, setPage, setAngle, setIsRotating]);
 
     return (
         <main className="RotatingCube_Main flex justify-center items-center overflow-hidden min-h-screen">

@@ -9,7 +9,7 @@ function Client() {
     const { setPage } = useGlobalContext();
     useEffect(() => {
         setPage(path);
-    }, []);
+    }, [path, setPage]);
 
     const word = [
         "s",
@@ -39,9 +39,21 @@ function Client() {
     const [scrollTop, setScrollTop] = useState<number>(0);
 
     useEffect(() => {
-        window.addEventListener("scroll", () => {
-            setScrollTop(window.document.documentElement.scrollTop);
-        });
+        const handleScroll = () => {
+            if (typeof window !== "undefined") {
+                setScrollTop(window.document.documentElement.scrollTop);
+            }
+        };
+
+        if (typeof window !== "undefined") {
+            window.addEventListener("scroll", handleScroll);
+        }
+
+        return () => {
+            if (typeof window !== "undefined") {
+                window.removeEventListener("scroll", handleScroll);
+            }
+        };
     }, []);
 
     return (

@@ -9,7 +9,7 @@ function Client() {
     const { setPage } = useGlobalContext();
     useEffect(() => {
         setPage(path);
-    }, []);
+    }, [path, setPage]);
 
     const box = 9;
 

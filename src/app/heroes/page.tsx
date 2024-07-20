@@ -14,7 +14,7 @@ function Client() {
 
     useEffect(() => {
         setPage(path);
-    }, []);
+    }, [path, setPage]);
 
     return (
         <main className="flex justify-center items-center relative overflow-hidden min-h-screen">
