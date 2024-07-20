@@ -17,11 +17,15 @@ function Client() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrollTop(window.document.documentElement.scrollTop);
+            if (typeof window !== "undefined") {
+                setScrollTop(window.document.documentElement.scrollTop);
+            }
         };
 
         const updateWindowHeight = () => {
-            setWindowHeight(window.innerHeight);
+            if (typeof window !== "undefined") {
+                setWindowHeight(window.innerHeight);
+            }
         };
 
         if (typeof window !== "undefined") {
