@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import Char from "./Components/Char";
 import { usePathname } from "next/navigation";
@@ -16,21 +17,17 @@ function Client() {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (typeof window !== "undefined") {
-                setScrollTop(window.document.documentElement.scrollTop);
-            }
+            setScrollTop(window.document.documentElement.scrollTop);
         };
 
         const updateWindowHeight = () => {
-            if (typeof window !== "undefined") {
-                setWindowHeight(window.innerHeight);
-            }
+            setWindowHeight(window.innerHeight);
         };
 
         if (typeof window !== "undefined") {
             window.addEventListener("scroll", handleScroll);
-            updateWindowHeight();
             window.addEventListener("resize", updateWindowHeight);
+            updateWindowHeight(); // Set initial window height
         }
 
         return () => {
