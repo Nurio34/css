@@ -1,0 +1,21 @@
+.Animate_Blast_Main {
+    filter: url(#gooey);
+}
+
+.Animate_Blast_Span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    animation: blast 5s ease-in-out;
+}
+@keyframes blast {
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(-50%);
+    }
+    50% {
+        transform: translateX(calc(1px * var(--transX)))
+            translateY(calc(1px * var(--transY)));
+    }
+}

@@ -1,0 +1,19 @@
+.Animations_DayNight_Section {
+    background: url("/city.webp");
+    background-repeat: repeat-x;
+    background-position: 0 bottom;
+    background-size: contain;
+
+    animation: dayAndNight_slide 15s linear infinite;
+}
+
+@keyframes dayAndNight_slide {
+    to {
+        background-position: 100vw bottom;
+    }
+}
+
+.Animations_DayNight_Sun,
+.Animations_DayNight_Moon {
+    filter: drop-shadow(0 0 5px yellow) drop-shadow(0 0 10px yellow);
+}

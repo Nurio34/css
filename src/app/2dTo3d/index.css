@@ -1,0 +1,31 @@
+.Animations_2dTo3d_Main {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    position: relative;
+}
+
+.Animations_2dTo3d_Div {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.Animations_2dTo3d_Span {
+    background-image: url("/watermelon.webp");
+    background-size: cover;
+    transition: 1s;
+    border-radius: 1rem;
+}
+
+.Animations_2dTo3d_Div:hover .Animations_2dTo3d_Span {
+    transform: rotateX(75deg) rotateZ(-45deg)
+        translateZ(calc(-1px * var(--ind)));
+    z-index: calc(1 * var(--ind));
+}
+
+.Animations_2dTo3d_Div:hover .Animations_2dTo3d_Span:last-child {
+    box-shadow: -100px 100px black;
+}

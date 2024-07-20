@@ -1,0 +1,18 @@
+.Scroll2_Piece {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(
+        calc(
+            -50% + calc(calc(1px * var(--size)) * var(--x)) - calc(1px *
+                        calc(var(--box_size)) / 2)
+        ),
+        calc(
+            -50% + calc(calc(1px * var(--size)) * var(--y)) - calc(1px *
+                        calc(var(--box_size)) / 2)
+        )
+    );
+    background-image: url("/tac_mahal.webp");
+    background-position: calc(calc(-1px * var(--size)) * var(--x))
+        calc(calc(-1px * var(--size)) * var(--y));
+}

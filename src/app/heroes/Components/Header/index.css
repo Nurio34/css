@@ -1,0 +1,9 @@
+.Animation1_Header::before {
+    content: "";
+    position: absolute;
+    bottom: -1vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 66%;
+    box-shadow: 0 0 10px 2px red;
+}

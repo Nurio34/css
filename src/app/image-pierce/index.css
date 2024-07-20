@@ -1,0 +1,9 @@
+.Animations_Image_Pierce_Li {
+}
+
+.Animations_Image_Pierce_Span {
+    transition: 1s ease-in-out;
+    background-position-y: calc(1px * var(--i));
+    background-repeat: repeat-y;
+    background-size: 100% calc(1px * var(--size));
+}
