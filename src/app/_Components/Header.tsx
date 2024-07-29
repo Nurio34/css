@@ -20,6 +20,7 @@ function Header() {
         "image-pierce",
         "rotating-cube",
         // "scrool-2",
+        "ink-cursor",
     ];
 
     const { page } = useGlobalContext();
