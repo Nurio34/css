@@ -1,0 +1,38 @@
+.Container {
+  animation: spin 20s linear infinite;
+}
+
+.Piece {
+  transform: rotateZ(calc(1deg * var(--total) * var(--i))) translateY(80px);
+}
+
+.Piece_Inside {
+  transform: rotateZ(0deg);
+  animation: anim 6s ease-in-out infinite,
+    changeColor 6s calc(0.1s * var(--i)) linear infinite;
+  background-color: var(--bg);
+}
+
+@keyframes spin {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes anim {
+  33% {
+    transform: rotateZ(90deg);
+  }
+  66% {
+    transform: rotateZ(90deg);
+  }
+}
+
+@keyframes changeColor {
+  33% {
+    background-color: black;
+  }
+  66% {
+    background-color: var(--bg);
+  }
+}
